@@ -1,0 +1,85 @@
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
+
+# Color definitions (taken from Color Bash Prompt HowTo).
+# Some colors might look different of some terminals.
+# Normal Colors
+Black='\[\e[0;30m\]'        # Black
+Red='\[\e[0;31m\]'          # Red
+Green='\[\e[0;32m\]'        # Green
+Yellow='\[\e[0;33m\]'       # Yellow
+Blue='\[\e[0;34m\]'         # Blue
+Purple='\[\e[0;35m\]'       # Purple
+Cyan='\[\e[0;36m\]'         # Cyan
+White='\[\e[0;37m\]'        # White
+# Bold
+BBlack='\[\e[1;30m\]'       # Black
+BRed='\[\e[1;31m\]'         # Red
+BGreen='\[\e[1;32m\]'       # Green
+BYellow='\[\e[1;33m\]'      # Yellow
+BBlue='\[\e[1;34m\]'        # Blue
+BPurple='\[\e[1;35m\]'      # Purple
+BCyan='\[\e[1;36m\]'        # Cyan
+BWhite='\[\e[1;37m\]'       # White
+# Background
+On_Black='\[\e[40m\]'       # Black
+On_Red='\[\e[41m\]'         # Red
+On_Green='\[\e[42m\]'       # Green
+On_Yellow='\[\e[43m\]'      # Yellow
+On_Blue='\[\e[44m\]'        # Blue
+On_Purple='\[\e[45m\]'      # Purple
+On_Cyan='\[\e[46m\]'        # Cyan
+On_White='\[\e[47m\]'       # White
+
+NC="\[\e[m\]"               # Color Reset
+
+## Define some handy aliases
+alias ls="ls --color=auto"
+alias la="ls -A"
+alias ll='ls -hlA'
+alias enpass="/opt/Enpass/bin/runenpass.sh"
+
+
+## Setting up some fancy history shenanigans
+## should allow me to history | grep
+export HISTFILESIZE=20000
+export HISTSIZE=10000
+shopt -s histappend
+# Combine multiline commands into one in history
+shopt -s cmdhist
+# Ignore duplicates, ls without options and builtin commands
+HISTCONTROL=ignoreboth
+export HISTIGNORE="&:ls:[bf]g:exit"
+
+## Print nickname for git/hg/bzr/svn version control in CWD
+## Optional $1 of format string for printf, default "(%s) "
+function be_get_branch {
+  local dir="$PWD"
+  local vcs
+  local nick
+  while [[ "$dir" != "/" ]]; do
+    for vcs in git hg svn bzr; do
+      if [[ -d "$dir/.$vcs" ]] && hash "$vcs" &>/dev/null; then
+        case "$vcs" in
+          git) __git_ps1 "${1:-(%s) }"; return;;
+          hg) nick=$(hg branch 2>/dev/null);;
+          svn) nick=$(svn info 2>/dev/null\
+                | grep -e '^Repository Root:'\
+                | sed -e 's#.*/##');;
+          bzr)
+            local conf="${dir}/.bzr/branch/branch.conf" # normal branch
+            [[ -f "$conf" ]] && nick=$(grep -E '^nickname =' "$conf" | cut -d' ' -f 3)
+            conf="${dir}/.bzr/branch/location" # colo/lightweight branch
+            [[ -z "$nick" ]] && [[ -f "$conf" ]] && nick="$(basename "$(< $conf)")"
+            [[ -z "$nick" ]] && nick="$(basename "$(readlink -f "$dir")")";;
+        esac
+        [[ -n "$nick" ]] && printf "${1:-(%s) }" "$nick"
+        return 0
+      fi
+    done
+    dir="$(dirname "$dir")"
+  done
+}
+
+export GIT_PS1_SHOWDIRTYSTATE=yes
+export PS1="${Cyan}\u@\h${NC}:${Purple}\W${Green}\$(be_get_branch ' (%s)')${NC}$ "
