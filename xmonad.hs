@@ -38,6 +38,7 @@ myKeys = [
 	((myModMask, xK_v), spawn "urxvtc -e alsamixer"),
 	((myModMask, xK_p), spawn "urxvtc -e python"),
 	((myModMask, xK_r), spawn "urxvtc -e irb"),
+	((myModMask, xK_n), spawn "urxvtc -e node"),
 	((myModMask, xK_d), spawn "dmenu_run"),
 	((myModMask, xK_t), spawn myTerminal),
 	-- Scratchpads
@@ -69,8 +70,7 @@ myKeys = [
 
 myManageHook = composeAll . concat $
 	[ [ className =? "chromium-browser" --> doShift "web" ]
-	, [ className =? "atom" --> doShift "atom"]
-	, [ title =? "atom" --> doShift "atom"]
+	, [ className =? "Atom" --> doShift "atom"]
 	, [ className =? "slack" --> doShift "slack"]
 	, [ className =? "Slack" --> doShift "slack"]
 	, [ className =? "Enpass" --> doShift "enpass"]
