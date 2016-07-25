@@ -38,6 +38,7 @@ alias ls="ls --color=auto"
 alias la="ls -A"
 alias ll='ls -hlA'
 alias enpass="/opt/Enpass/bin/runenpass.sh"
+alias auto-enpass="(enpass &) && exit"
 
 
 ## Setting up some fancy history shenanigans

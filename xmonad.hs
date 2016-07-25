@@ -12,7 +12,7 @@ import Data.List
 
 myModMask = mod4Mask -- Use Super instead of Alt
 
-myWorkspaces = ["dev","atom","web","music","tmp1","tmp2"]
+myWorkspaces = ["dev","atom","web","slack","enpass","music"]
 myTerminal = "urxvtc"
 
 main = xmonad =<< xmobar myConfig
@@ -32,6 +32,7 @@ myKeys = [
 	-- Application spawning
 	((myModMask, xK_w), spawn "chromium" ),
 	((myModMask, xK_a), spawn "atom" ),
+	((myModMask, xK_s), spawn "slack" ),
 	((myModMask .|. shiftMask, xK_w), spawn "chromium --incognito" ),
 	((myModMask .|. shiftMask, xK_m), spawn "urxvtc -e ncmpcpp"),
 	((myModMask, xK_v), spawn "urxvtc -e alsamixer"),
@@ -70,6 +71,10 @@ myManageHook = composeAll . concat $
 	[ [ className =? "chromium-browser" --> doShift "web" ]
 	, [ className =? "atom" --> doShift "atom"]
 	, [ title =? "atom" --> doShift "atom"]
+	, [ className =? "slack" --> doShift "slack"]
+	, [ className =? "Slack" --> doShift "slack"]
+	, [ className =? "Enpass" --> doShift "enpass"]
+	, [ className =? "Enpass-Desktop" --> doShift "enpass"]
 	, [ title =? "ncmpcpp" --> doShift "music" ]
 	, [ resource =? "Dialog" --> doFloat] --Float all dialogs
 	, [ manageDocks ]
