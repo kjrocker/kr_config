@@ -51,6 +51,11 @@ shopt -s cmdhist
 HISTCONTROL=ignoreboth
 export HISTIGNORE="&:ls:[bf]g:exit"
 
+# Define a handy mkdir + cd function.
+function mkcd {
+  mkdir $1 ; cd $1
+}
+
 ## Print nickname for git/hg/bzr/svn version control in CWD
 ## Optional $1 of format string for printf, default "(%s) "
 function be_get_branch {
