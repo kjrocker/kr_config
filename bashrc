@@ -38,7 +38,7 @@ alias ls="ls --color=auto"
 alias la="ls -A"
 alias ll='ls -hlA'
 alias enpass="(/opt/Enpass/bin/runenpass.sh &) && exit"
-
+alias mkdir="mkdir -p"
 
 ## Setting up some fancy history shenanigans
 ## should allow me to history | grep
