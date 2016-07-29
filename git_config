@@ -5,4 +5,4 @@
 	co = checkout
 	cob = checkout -b
 	ec = config --global -e
-	
+	remove = remote
