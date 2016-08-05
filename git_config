@@ -5,6 +5,7 @@
 	co = checkout					# Checkout
 	cob = checkout -b				# Checkout Branch
 	ec = config --global -e				# Open Editor
+	cam = commit -am				# My most common commit
 	remove = remote					# Spelling
 	wip = !git add -u && git commit -m "WIP" 	# Create Temporary Commit
 	undo = reset HEAD~1 --mixed			# Remove prev. commit, keep changes
