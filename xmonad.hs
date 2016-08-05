@@ -49,6 +49,9 @@ myKeys = [
 	((myModMask, xK_Left), prevWS),
 	((myModMask .|. shiftMask, xK_Right), shiftToNext),
 	((myModMask .|. shiftMask, xK_Left), shiftToPrev),
+	-- Screen Capture
+	((myModMask , xK_Print ), spawn "scrot ~/screenshots/screen_%Y%m%d-%H-%M-%S.png -d 1"),
+	((myModMask .|. shiftMask, xK_Print ), spawn "scrot ~/screenshots/window_%Y%m%d-%H-%M-%S.png -d 1-u")
 	-- Master area manipulation
 	((myModMask, xK_m), windows W.swapMaster),
 	((myModMask .|. shiftMask, xK_h), sendMessage Shrink),
