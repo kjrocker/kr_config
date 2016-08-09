@@ -87,4 +87,4 @@ function be_get_branch {
 }
 
 export GIT_PS1_SHOWDIRTYSTATE=yes
-export PS1="${Cyan}\u@\h${NC}:${Purple}\W${Green}\$(be_get_branch ' (%s)')${NC}$ "
+export PS1="${Purple}\W${Green}\$(be_get_branch ' (%s)')${NC}$ "
