@@ -86,5 +86,16 @@ function be_get_branch {
   done
 }
 
+alias nib='
+  docker run \
+    -it \
+    --rm \
+    -v $(pwd):$(pwd) \
+    -w $(pwd) \
+    -v $HOME/.docker:/root/.docker:ro \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -e "DOCKER_HOST_URL=$DOCKER_HOST" \
+    technekes/nib'
+
 export GIT_PS1_SHOWDIRTYSTATE=yes
 export PS1="${Purple}\W${Green}\$(be_get_branch ' (%s)')${NC}$ "
