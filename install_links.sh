@@ -1,6 +1,8 @@
 #!/bin/bash
 
-REPO_PATH="/home/kevin/.config/kr_config"
+HOME="/home/kevin"
+
+REPO_PATH="${HOME}/.config/kr_config"
 
 case "$1" in
   help )
@@ -8,15 +10,15 @@ case "$1" in
     exit
     ;;
   xmonad )
-    ln -s ${REPO_PATH}/xmobar_rc /home/kevin/.xmobarrc
-    ln -s ${REPO_PATH}/xmonad.hs /home/kevin/.xmonad/xmonad.hs
+    ln -s ${REPO_PATH}/xmobar_rc ${HOME}/.xmobarrc
+    ln -s ${REPO_PATH}/xmonad.hs ${HOME}/.xmonad/xmonad.hs
     ;;
   openbox )
     echo "No openbox config files under git at this time."
     ;;
 esac
 
-ln -s ${REPO_PATH}/bashrc /home/kevin/.bashrc
-ln -s ${REPO_PATH}/git-completion.bash /home/kevin/.git-completion.bash
-ln -s ${REPO_PATH}/git-prompt.sh /home/kevin/.git-prompt.sh
-ln -s ${REPO_PATH}/git_config /home/kevin/.gitconfig
+ln -s ${REPO_PATH}/bashrc ${HOME}/.bashrc
+ln -s ${REPO_PATH}/git-completion.bash ${HOME}/.git-completion.bash
+ln -s ${REPO_PATH}/git-prompt.sh ${HOME}/.git-prompt.sh
+ln -s ${REPO_PATH}/git_config ${HOME}/.gitconfig
