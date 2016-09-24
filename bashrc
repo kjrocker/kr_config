@@ -100,4 +100,4 @@ alias nib='
 alias abc-magic-up="cd /home/kevin/workspace/abc_web_app/ && sudo docker-compose up"
 
 export GIT_PS1_SHOWDIRTYSTATE=yes
-export PS1="${Purple}\W${Green}\$(be_get_branch ' (%s)')${NC}$ "
+export PS1="${White}\W${BCyan}\$(be_get_branch ' (%s)')${NC}$ "
