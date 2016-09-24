@@ -2,11 +2,13 @@
 	name = Kevin Rocker
 	email = kevin.j.rocker@gmail.com
 [alias]
-	co = checkout					# Checkout
-	cob = checkout -b				# Checkout Branch
-	ec = config --global -e				# Open Editor
-	cam = commit -am				# My most common commit
-	remove = remote					# Spelling
-	wip = !git add -u && git commit -m "WIP" 	# Create Temporary Commit
-	undo = reset HEAD~1 --mixed			# Remove prev. commit, keep changes
-	amend = commit -a --amend			# Add further changes to prev. commit
+	co = checkout
+	cob = checkout -b
+	ec = config --global -e
+	cm = !git add -A && git commit -m
+	remove = remote
+	save = !git add -A && git commit -m 'SAVEPOINT'
+	wip = !git add -u && git commit -m "WIP"
+	undo = reset HEAD~1 --mixed
+	amend = commit -a --amend
+	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
