@@ -10,7 +10,7 @@ Config {
                 Run Swap [] 10,
                 Run Date "%a %b %_d %l:%M" "date" 10,
                 Run Network "wlan0" [] 10,
-		Run Battery ["-t","<left>% / <timeleft>"] 10,
+		            Run Battery ["-t","<left>% / <timeleft>"] 10,
                 Run StdinReader
                 ]
        , sepChar = "%"

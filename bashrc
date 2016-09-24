@@ -87,7 +87,7 @@ function be_get_branch {
 }
 
 alias nib='
-  docker run \
+  sudo docker run \
     -it \
     --rm \
     -v $(pwd):$(pwd) \
@@ -96,6 +96,8 @@ alias nib='
     -v /var/run/docker.sock:/var/run/docker.sock \
     -e "DOCKER_HOST_URL=$DOCKER_HOST" \
     technekes/nib'
+
+alias abc-magic-up="cd /home/kevin/workspace/abc_web_app/ && sudo docker-compose up"
 
 export GIT_PS1_SHOWDIRTYSTATE=yes
 export PS1="${Purple}\W${Green}\$(be_get_branch ' (%s)')${NC}$ "

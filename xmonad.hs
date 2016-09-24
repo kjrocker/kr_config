@@ -12,7 +12,7 @@ import Data.List
 
 myModMask = mod4Mask -- Use Super instead of Alt
 
-myWorkspaces = ["dev","atom","atom2","web","slack","enpass","music"]
+myWorkspaces = ["dev","atom","web","slack","enpass","music"]
 myTerminal = "urxvtc"
 
 main = xmonad =<< xmobar myConfig
