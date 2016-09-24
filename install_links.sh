@@ -1,10 +1,11 @@
 #!/bin/bash
 
-ln -s ~/.config/bashrc ~/.bashrc
-ln -s ~/.config/git-completion.bash ~/.git-completion.bash
-ln -s ~/.config/git-prompt.sh ~/.git-prompt.sh
-ln -s ~/.config/git_config ~/.gitconfig
-ln -s ~/.config/xmobar_rc ~/.xmobarrc
-ln -s ~/.config/xmonad.hs ~/.xmonad/xmonad.hs
+REPO_PATH="~/.config/kr_config"
 
-ln -s ~/Dropbox/Apps/Monospace/ ~/notes
+ln -s ${REPO_PATH}/bashrc ~/.bashrc
+ln -s ${REPO_PATH}/git-completion.bash ~/.git-completion.bash
+ln -s ${REPO_PATH}/git-prompt.sh ~/.git-prompt.sh
+ln -s ${REPO_PATH}/git_config ~/.gitconfig
+
+ln -s ${REPO_PATH}/xmobar_rc ~/.xmobarrc
+ln -s ${REPO_PATH}/xmonad.hs ~/.xmonad/xmonad.hs
