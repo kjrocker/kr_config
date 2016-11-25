@@ -15,9 +15,9 @@ exit
 sudo apt-get -q update
 sudo apt-get -q upgrade
 sudo apt-get -q install apt-transport-https ca-certificates build-essential libssl-dev
-sudo apt-get -q install git tig xclip sshfs docker-engine
+sudo apt-get -q install git tig xclip sshfs docker-engine tmux
 
-# Install NVM, RVM, and Node
+# Install NVM, RVM, Rails, and Node
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
 curl -sSL https://get.rvm.io | bash -s stable --rails
@@ -34,4 +34,6 @@ if [[ $2 ]]; then
   sudo dpkg --install atom-amd64.deb
   rm atom-amd64.deb
   cd $1 && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+
+  apm install sync_settings
 fi
