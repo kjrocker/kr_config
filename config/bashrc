@@ -37,7 +37,6 @@ NC="\[\e[m\]"               # Color Reset
 alias ls="ls --color=auto"
 alias la="ls -A"
 alias ll='ls -hlA'
-alias enpass="(/opt/Enpass/bin/runenpass.sh &) && exit"
 alias mkdir="mkdir -p"
 
 ## Setting up some fancy history shenanigans
@@ -86,18 +85,10 @@ function be_get_branch {
   done
 }
 
-alias nib='
-  sudo docker run \
-    -it \
-    --rm \
-    -v $(pwd):$(pwd) \
-    -w $(pwd) \
-    -v $HOME/.docker:/root/.docker:ro \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -e "DOCKER_HOST_URL=$DOCKER_HOST" \
-    technekes/nib'
-
-alias abc-magic-up="cd /home/kevin/workspace/abc_web_app/ && sudo docker-compose up"
+# Load NVM and RVM
+source $HOME/.rvm/scripts/rvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 export GIT_PS1_SHOWDIRTYSTATE=yes
 export PS1="${BGreen}\W${BCyan}\$(be_get_branch ' (%s)')${NC}$ "
