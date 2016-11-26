@@ -1,18 +1,10 @@
 
 # Overview
 
-A shell script I've developed to streamline configuration of new Debian-based systems.
+A small collection of scripts I've developed to get up and running on new systems quickly.
 
-Installs from a single command, shown below.
 ```
-\curl -o- https://raw.githubusercontent.com/krocker34/kr_config/master/initializer.sh | bash
+sudo apt-get install git
+mkdir ~/.config && cd ~/.config
+git clone https://github.com/krocker34/kr_config.git my-helpers
 ```
-The initalizer downloads the repo and passes off to the actual installation script.
-
-If you've already cloned the repo, just run `./installer.sh`
-
-# Contents
-
-* Installs a few packages I will always want
-* Sets up various configuration files.
-* Adds a github SSH key
