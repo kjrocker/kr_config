@@ -1,8 +1,8 @@
 #!/bin/bash
 
 function create_link {
-  rm $1
-  ln -s $2 $1
+  \rm -f $1
+  \ln -s $2 $1
 }
 
 create_link $1/.bashrc $2/bashrc

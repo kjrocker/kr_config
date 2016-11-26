@@ -5,7 +5,7 @@ A shell script I've developed to streamline configuration of new Debian-based sy
 
 Installs from a single command, shown below.
 ```
-\curl -o https://raw.githubusercontent.com/krocker34/kr_config/master/initializer.sh | bash
+\curl -o- https://raw.githubusercontent.com/krocker34/kr_config/master/initializer.sh | bash
 ```
 The initalizer downloads the repo and passes off to the actual installation script.
 
