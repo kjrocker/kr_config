@@ -87,7 +87,7 @@ function be_get_branch {
 }
 
 alias nib='
-  sudo docker run \
+  docker run \
     -it \
     --rm \
     -v $(pwd):$(pwd) \
@@ -101,3 +101,5 @@ alias abc-magic-up="cd /home/kevin/workspace/abc_web_app/ && sudo docker-compose
 
 export GIT_PS1_SHOWDIRTYSTATE=yes
 export PS1="${BGreen}\W${BCyan}\$(be_get_branch ' (%s)')${NC}$ "
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
