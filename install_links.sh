@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./.constants.sh
+THIS_FOLDER=`dirname $(realpath $0)`
 
 function create_link {
   \rm -f $1
