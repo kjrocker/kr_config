@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./.constants.sh
+THIS_FOLDER=`dirname $(realpath $0)`
 
 sudo cp ${THIS_FOLDER}/config/custom_repos /etc/apt/sources.list.d/docker_and_enpass.list
 wget -O - https://dl.sinew.in/keys/enpass-linux.key | sudo apt-key add -
@@ -22,19 +22,3 @@ NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 nvm install node
-
-function install_atom {
-  wget -q https://atom.io/download/deb
-  mv deb $1
-  sudo dpkg --install $1
-  rm $1
-}
-
-# Install GUI applications if we found an X installation
-if $X_INSTALLED ; then
-  sudo apt-get install chromium enpass gitk git-gui
-  cd ${HOME} && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-  install_atom atom-amd64.deb
-
-  apm install sync_settings
-fi
